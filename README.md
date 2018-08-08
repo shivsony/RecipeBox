@@ -22,3 +22,8 @@
 
 .You can get feedback on your project by sharing it with your friends on Facebook.
 
+<----------------------------------------------------------RUN THESE TWO COMMANDS-------------------------------------------------------------->
+
+$ npm install
+
+$ npm start
