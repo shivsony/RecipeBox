@@ -1,13 +1,15 @@
 .App {
+  background: #EDEDED;
   margin: 0;
   padding: 0;
   text-align: center;
-
 }
 .App-header {
   background-color: #222;
   color: white;
   padding: 2%;
+  margin-bottom: 1%;
+  box-shadow: 1px 2px;
 }
 
 .App-title {

@@ -1,0 +1,20 @@
+.recipie-list-wrapper {
+    text-align: left;
+}
+section {
+    background: #e6e8ea;
+    margin: 0 auto;
+    width: 70%;
+    padding: 1%;
+}
+.heading {
+    font-family: Fugaz One;
+    font-size: 2rem;
+    font-weight: 800;
+}
+
+.gradients-list {
+    background: #000000b3;
+    padding: 3%;
+    color: aliceblue;
+}

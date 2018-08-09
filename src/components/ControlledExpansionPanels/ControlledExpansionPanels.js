@@ -6,27 +6,41 @@ import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import PinnedSubheaderList from '../PinnedSubheaderList/PinnedSubheaderList';
-import PopUp from '../PopUp/PopUp';
+import List from '../List/List';
 
 const styles = theme => ({
   root: {
     width: '100%',
   },
   heading: {
-    fontSize: theme.typography.pxToRem(15),
+    fontSize: theme.typography.pxToRem(40),
     flexBasis: '33.33%',
-    flexShrink: 0,
+    flexShrink: 1,
+    fontWeight: 'bold'
   },
   secondaryHeading: {
-    fontSize: theme.typography.pxToRem(15),
+    fontSize: theme.typography.pxToRem(10),
     color: theme.palette.text.secondary,
+    margin: 'auto 0'
   },
 });
 
 class ControlledExpansionPanels extends React.Component {
   state = {
     expanded: null,
+    arrays: {
+      gradients: ['3 tablespoons butter',
+        '1 teaspoon seasoning salt',
+        '1 teaspoon onion powder',
+        '4 skinless, boneless chicken breast halves',
+        '2 teaspoons garlic powder',
+        ],
+      directions: [
+        'Melt butter in a large skillet over medium high heat.',
+        'Add chicken and sprinkle with garlic powder, seasoning salt and onion powder',
+        'Saute about 10 to 15 minutes on each side, or until chicken is cooked through and juices run clear.'
+      ]
+    }
   };
 
   handleChange = panel => (event, expanded) => {
@@ -44,57 +58,15 @@ class ControlledExpansionPanels extends React.Component {
         <ExpansionPanel expanded={expanded === 'panel1'} onChange={this.handleChange('panel1')}>
           <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
             <Typography className={classes.heading}>{heading}</Typography>
-            <Typography className={classes.secondaryHeading}>All Veg Recipies</Typography>
+            <Typography className={classes.secondaryHeading}>click here to see full procedure</Typography>
           </ExpansionPanelSummary>
-          <PinnedSubheaderList/>
+          <List obj={this.state} heading={heading}/>
           <ExpansionPanelDetails>
             <Typography> 
-            You are currently not an owner1
+              You are currently not an owner1
             </Typography>
           </ExpansionPanelDetails>
         </ExpansionPanel>
-        <ExpansionPanel expanded={expanded === 'panel2'} onChange={this.handleChange('panel2')}>
-          <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-            <Typography className={classes.heading}>Users</Typography>
-            <Typography className={classes.secondaryHeading}>
-              You are currently not an owner2
-            </Typography>
-          </ExpansionPanelSummary>
-          <ExpansionPanelDetails>
-            <Typography>
-              Donec placerat, lectus sed mattis semper, neque lectus feugiat lectus, varius pulvinar
-              diam eros in elit. Pellentesque convallis laoreet laoreet.
-            </Typography>
-          </ExpansionPanelDetails>
-        </ExpansionPanel>
-        <ExpansionPanel expanded={expanded === 'panel3'} onChange={this.handleChange('panel3')}>
-          <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-            <Typography className={classes.heading}>Advanced settings</Typography>
-            <Typography className={classes.secondaryHeading}>
-              Filtering has been entirely disabled for whole web server
-            </Typography>
-          </ExpansionPanelSummary>
-          <ExpansionPanelDetails>
-            <Typography>
-              Nunc vitae orci ultricies, auctor nunc in, volutpat nisl. Integer sit amet egestas
-              eros, vitae egestas augue. Duis vel est augue.
-            </Typography>
-          </ExpansionPanelDetails>
-        </ExpansionPanel>
-        <ExpansionPanel expanded={expanded === 'panel4'} onChange={this.handleChange('panel4')}>
-          <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-            <Typography className={classes.heading}>Personal data</Typography>
-          </ExpansionPanelSummary>
-          <ExpansionPanelDetails>
-            <Typography>
-              Nunc vitae orci ultricies, auctor nunc in, volutpat nisl. Integer sit amet egestas
-              eros, vitae egestas augue. Duis vel est augue.
-            </Typography>
-          </ExpansionPanelDetails>
-        </ExpansionPanel>
-        <div className="popup">
-          <PopUp/>
-        </div>
       </div>
     );
   }
