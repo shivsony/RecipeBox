@@ -6,16 +6,26 @@ import PopUp from './components/PopUp/PopUp';
 import './App.css';
 
 let mydata = sessionStorage.getItem('data') ? JSON.parse(sessionStorage.getItem('data')) : {
-  heading: [],
-  gradients: [],
-  directions: []
+  heading: ['Garlic Chicken'],
+  gradients: [
+    '3 tablespoons butter',
+    '1 teaspoon seasoning salt',
+    '1 teaspoon onion powder',
+    '4 skinless, boneless chicken breast halves',
+    '2 teaspoons garlic powder',
+  ],
+  directions: [
+    'Melt butter in a large skillet over medium high heat.',
+    'Add chicken and sprinkle with garlic powder, seasoning salt and onion powder',
+    'Saute about 10 to 15 minutes on each side, or until chicken is cooked through and juices run clear.'
+  ]
 };
 
 sessionStorage.setItem("data",JSON.stringify(mydata));
 
 var items = JSON.parse(sessionStorage.getItem("data"));
 
-console.log(items.heading);
+//console.log(items.heading);
 
 class App extends Component {
   constructor(props){
@@ -31,7 +41,7 @@ class App extends Component {
       this.setState({
         recipes: items.heading
       });
-      console.log(this.state.recipes);
+      //console.log(this.state.recipes);
     }
 
   render() { 

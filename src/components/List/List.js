@@ -1,10 +1,8 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import Delete from '@material-ui/icons/Delete';
 import Edit from '@material-ui/icons/Edit';
 import EditPase from '../EditPage/EditPage';
 import './List.css';
-import { join } from 'path';
 class List extends React.Component {
     constructor(props){
         super(props);
@@ -27,7 +25,7 @@ class List extends React.Component {
         this.setState({
             bool: !this.state.bool
         })
-        console.log(this.state.bool);
+        //console.log(this.state.bool);
     }
     render() {
         const gradients = this.props.obj.arrays.gradients.map((itm,i) =>
@@ -55,7 +53,13 @@ class List extends React.Component {
                     <div className="gradients-list">
                         <ul>{gradients}</ul>
                     </div>
-                    { this.state.bool ? <EditPase heading={this.props.heading} items={this.props.obj.arrays}/> : ''}
+                    { this.state.bool ? 
+                        <EditPase 
+                            heading={this.props.heading}
+                            items={this.props.obj.arrays}
+                            index={this.props.index} 
+                        /> : ''
+                    }
                 </section>
                 <section className="directions">
                     <span className="heading">directions:</span>
