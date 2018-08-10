@@ -2,10 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Delete from '@material-ui/icons/Delete';
 import Edit from '@material-ui/icons/Edit';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import EditPase from '../EditPage/EditPage';
-
 import './List.css';
+import { join } from 'path';
 class List extends React.Component {
     constructor(props){
         super(props);
@@ -13,8 +12,16 @@ class List extends React.Component {
             bool : false
         }
     }
-    delete() {
-        console.log("delete");
+    delete(event) {
+        var mydata = JSON.parse(sessionStorage.getItem('data'));
+        var arr = mydata.heading;
+        arr[this.props.index] = false;
+        mydata.heading = arr;
+        sessionStorage.setItem('data',JSON.stringify(mydata))
+        this.reloadPage();
+    }
+    reloadPage() {
+        window.location.reload()
     }
     edit() {
         this.setState({
@@ -40,7 +47,9 @@ class List extends React.Component {
             <div className="recipie-list-wrapper">
                 <section className="gradients">
                     <span className="heading"> Gradients:
-                     <Delete onClick={this.delete.bind(this)}/>
+                     <Delete onClick={this.delete.bind(this)}>
+                     <a href="javascript:location.reload(true)"></a>
+                     </Delete>
                      <Edit onClick={this.edit.bind(this)}/>
                     </span>
                     <div className="gradients-list">

@@ -3,10 +3,13 @@ import PropTypes from 'prop-types';
 import './Form.css';
 
 class Form extends React.Component {
-  handleChange = event => {
+  handleChange(event) {
     var name = document.querySelector('input')
-    event.preventDefault();
-    sessionStorage.setItem("name",name.value );
+    console.log(name.value);
+    var items = JSON.parse(sessionStorage.getItem("data"));
+    items.heading.push(name.value);
+    name.value = '';
+    sessionStorage.setItem("data",JSON.stringify(items));
   };
 
   render() {

@@ -5,30 +5,40 @@ import { faStroopwafel } from '@fortawesome/free-solid-svg-icons';
 import PopUp from './components/PopUp/PopUp';
 import './App.css';
 
+let mydata = sessionStorage.getItem('data') ? JSON.parse(sessionStorage.getItem('data')) : {
+  heading: [],
+  gradients: [],
+  directions: []
+};
 
+sessionStorage.setItem("data",JSON.stringify(mydata));
+
+var items = JSON.parse(sessionStorage.getItem("data"));
+
+console.log(items.heading);
 
 class App extends Component {
   constructor(props){
     super(props);
     this.state = {
-      recipes: ["chicken","paneer"]
+      recipes: items.heading
     }
   }
 
     handelClick(event) {
       event.preventDefault();
-      var name = sessionStorage.getItem("name");
-      console.log(name)
-      var newarr = () => { return this.state.recipes.push(name)};
+      var items = JSON.parse(sessionStorage.getItem("data"));
       this.setState({
-        recipes: newarr()
+        recipes: items.heading
       });
       console.log(this.state.recipes);
     }
 
-  render() {
-    var allRecipies = this.state.recipes.map( (element) => {
-      return(<ControlledExpansionPanels heading={element}/>);
+  render() { 
+    var allRecipies = this.state.recipes.map( (element,i) => {
+      if(element){
+        return(<ControlledExpansionPanels heading={element} keys={i}/>);
+      }
     });
     return (
       <div className="App">

@@ -60,10 +60,11 @@ class ControlledExpansionPanels extends React.Component {
             <Typography className={classes.heading}>{heading}</Typography>
             <Typography className={classes.secondaryHeading}>click here to see full procedure</Typography>
           </ExpansionPanelSummary>
-          <List obj={this.state} heading={heading}/>
+          <List obj={this.state} heading={heading} index={this.props.keys}/>
           <ExpansionPanelDetails>
             <Typography> 
-              You are currently not an owner1
+              You are currently not an owner
+              {this.props.keys}
             </Typography>
           </ExpansionPanelDetails>
         </ExpansionPanel>
