@@ -28,20 +28,19 @@ class SimplePopper extends React.Component {
   };
 
   render() {
-    const { classes } = this.props;
     const { anchorEl, open } = this.state;
     const id = open ? 'simple-popper' : null;
 
     return (
       <div>
         <Button aria-describedby={id} variant="contained" onClick={this.handleClick}>
-          App Recipie
+          Add Recipie
         </Button>
         <Popper id={id} open={open} anchorEl={anchorEl} transition>
           {({ TransitionProps }) => (
             <Fade {...TransitionProps} timeout={350}>
               <Paper>
-                <Form/>
+                <Form index={this.props.index}/>
               </Paper>
             </Fade>
           )}

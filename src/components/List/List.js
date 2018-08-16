@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 import Delete from '@material-ui/icons/Delete';
 import Edit from '@material-ui/icons/Edit';
 import EditPase from '../EditPage/EditPage';
@@ -12,9 +13,7 @@ class List extends React.Component {
     }
     delete(event) {
         var mydata = JSON.parse(sessionStorage.getItem('data'));
-        var arr = mydata.heading;
-        arr[this.props.index] = false;
-        mydata.heading = arr;
+        mydata[this.props.index] = null;
         sessionStorage.setItem('data',JSON.stringify(mydata))
         this.reloadPage();
     }
@@ -28,10 +27,11 @@ class List extends React.Component {
         //console.log(this.state.bool);
     }
     render() {
-        const gradients = this.props.obj.arrays.gradients.map((itm,i) =>
+        const data = JSON.parse(sessionStorage.getItem('data'));
+        const gradients = data[this.props.index].gradients.map((itm,i) =>
             {return(<li key={i}>{itm}</li>);}
         );
-        const directions = this.props.obj.arrays.directions.map((itm,i) => 
+        const directions = data[this.props.index].directions.map((itm,i) => 
             {return(<li key={i}>{itm}</li>);}
         );
         const count = {listStyle : 'decimal'}
@@ -55,8 +55,6 @@ class List extends React.Component {
                     </div>
                     { this.state.bool ? 
                         <EditPase 
-                            heading={this.props.heading}
-                            items={this.props.obj.arrays}
                             index={this.props.index} 
                         /> : ''
                     }
@@ -74,5 +72,8 @@ class List extends React.Component {
     }
 }
 
+List.PropTypes = {
+    index: PropTypes.number.isRequired
+}
 
 export default List;

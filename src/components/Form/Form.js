@@ -6,7 +6,12 @@ class Form extends React.Component {
     var name = document.querySelector('input')
     //console.log(name.value);
     var items = JSON.parse(sessionStorage.getItem("data"));
-    items.heading.push(name.value);
+    
+    items.push({
+      heading:[name.value],
+      gradients: ['click on edit to write the gradients and directions'],
+      directions: ['directions...']
+    });
     name.value = '';
     sessionStorage.setItem("data",JSON.stringify(items));
   };

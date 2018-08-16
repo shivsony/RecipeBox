@@ -27,19 +27,6 @@ const styles = theme => ({
 class ControlledExpansionPanels extends React.Component {
   state = {
     expanded: null,
-    arrays: {
-      gradients: ['3 tablespoons butter',
-        '1 teaspoon seasoning salt',
-        '1 teaspoon onion powder',
-        '4 skinless, boneless chicken breast halves',
-        '2 teaspoons garlic powder',
-        ],
-      directions: [
-        'Melt butter in a large skillet over medium high heat.',
-        'Add chicken and sprinkle with garlic powder, seasoning salt and onion powder',
-        'Saute about 10 to 15 minutes on each side, or until chicken is cooked through and juices run clear.'
-      ]
-    }
   };
 
   handleChange = panel => (event, expanded) => {
@@ -59,7 +46,7 @@ class ControlledExpansionPanels extends React.Component {
             <Typography className={classes.heading}>{heading}</Typography>
             <Typography className={classes.secondaryHeading}>click here to see full procedure</Typography>
           </ExpansionPanelSummary>
-          <List obj={this.state} heading={heading} index={this.props.keys}/>
+          <List index={this.props.keys}/>
         </ExpansionPanel>
       </div>
     );
@@ -68,6 +55,8 @@ class ControlledExpansionPanels extends React.Component {
 
 ControlledExpansionPanels.propTypes = {
   classes: PropTypes.object.isRequired,
+  heading: PropTypes.string.isRequired,
+  keys: PropTypes.number.isRequired
 };
 
 export default withStyles(styles)(ControlledExpansionPanels);

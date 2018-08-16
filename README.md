@@ -24,6 +24,8 @@
 
 <----------------------------------------------------------RUN THESE TWO COMMANDS-------------------------------------------------------------->
 
+set up your system for raect js and then run these two commands
+
 $ npm install
 
 $ npm start
